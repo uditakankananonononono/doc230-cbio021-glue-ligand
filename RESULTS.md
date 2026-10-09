@@ -15,3 +15,12 @@ All 6 gates plus D7 are met on paper. What that means:
 - D1 IsActive labels are heterogeneous across sources; prevalence 0.81.
 - No structure, no ternary-complex modelling, no experimental validation. This does not test the parent's core claim (undruggable-target glue discovery) at all.
 Caveats on counts: gates are my own prereg thresholds, not published benchmarks. D3 majority macro-F1 is the macro-F1 of always predicting the largest class (0.095), so the +0.15 bar was easy.
+
+## Extension D8-D10 (PREREG_EXT.md and src/ext_run.py committed together at 3ca147e before any score; results/ext_results.json, ext_run.log)
+Same pipeline scored all splits in one script. Scaffold-cold reference: D1 AUROC 0.847 (share of test molecules with a train neighbour >=0.85: see ext_results.json), D2 AUPRC 0.998 (prevalence 0.279).
+| Dir | Result | Gate |
+|---|---|---|
+| D8 cluster-cold D1 (Butina 0.60) | AUROC 0.784; share test with train neighbour >=0.85: 1.0% | MET (>=0.70) |
+| D9 source-cold D1 (142 publications) | AUROC 0.630 (physchem-only 0.588; prevalence 0.807); share >=0.85: 2.5% | NOT MET (>=0.65) |
+| D10 source-cold D2 | AUPRC 0.974 vs prevalence 0.279, AUROC 0.992 | MET (>= prev+0.10) |
+Reading: removing close analogs (D8) cuts D1 from 0.847 to 0.784, and holding out whole publications (D9) cuts it to 0.630, missing my gate. So most of the D1 signal in the original result came from shared chemotype series and papers, as the earlier caveat suspected. The recruiter label (D10) stays easy even source-cold, since it separates chemical classes. Limits: one deterministic split per direction (no variance), uneven source group sizes (1 to 97 molecules), uneven fold sizes, labels are database-curated. Ligand-only, no structure, the parent's core remains unbuilt. With this batch the repo has D1-D10.

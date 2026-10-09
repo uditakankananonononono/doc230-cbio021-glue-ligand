@@ -1,0 +1,8 @@
+{'n': 1629}
+{'n': 1629, 'n_scaffold_groups': 872, 'n_cluster_groups': 342, 'n_source_groups': 142}
+{'auroc': 0.8469474040250297, 'share_ge085': 0.14794352363413138}
+{'auprc': 0.9979439998398614, 'prev': 0.27922885572139305}
+D8 {'auroc': 0.7842453673503902, 'share_ge085': 0.010435850214855739, 'gate_met': True}
+D9 {'auroc': 0.630240873619869, 'auroc_physchem': 0.588287308835254, 'prevalence': 0.8066298342541437, 'share_ge085': 0.025168815224063844, 'gate_met': False}
+D10 {'auprc': 0.9739272536791878, 'prevalence': 0.27922885572139305, 'auroc': 0.9915246420479985, 'gate_met': True}
+done

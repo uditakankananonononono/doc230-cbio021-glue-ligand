@@ -1,4 +1,4 @@
-partial: ligand-only slice on MolGlueDB (no structure model, no ternary complex, no discovery claim); all gates met but scores mostly reflect chemotype-series structure, see RESULTS.md
+partial: ligand-only slice on MolGlueDB (no structure model, no ternary complex, no discovery claim); all gates met but scores mostly reflect chemotype-series structure, see RESULTS.md Extended with D8-D10: cluster-cold D1 0.78 (met), source-cold D1 0.63 (gate missed), source-cold recruiter AUPRC 0.97 (met); see RESULTS.md.
 # doc230-cbio021-glue-ligand
 Preregistered ligand-only tests of whether chemistry predicts molecular-glue properties (activity, E3 recruiter, primary target) in MolGlueDB under cold-scaffold validation. Parent: CBIO021 GlueForge (Molecular Glue Discovery Pipeline), whose structural core is NOT built here.
 Files: PREREG.md (with Amendment 1), RESULTS.md, src/run.py, results/ (results.json, run.log, first_run/ with the original run that had a target-label bug).
