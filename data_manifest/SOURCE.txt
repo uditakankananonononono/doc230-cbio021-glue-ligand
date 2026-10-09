@@ -1,0 +1,1 @@
+source: https://www.molgluedb.com/download ('Download the complete MolGlueDB dataset in CSV format (Updated 2025-07)'); fetched via the site's own download endpoint /api/export_bj_data (tar.gz containing MolGlueDB_full.csv, 1840 rows). Qin lab, Ocean Univ. of China, NAR. Check the site's terms before redistribution; raw data not committed here.
