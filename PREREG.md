@@ -12,3 +12,7 @@ D5 Metadata-only baseline: D1 and D2 from Pharmacophore + Core + ResearchStage o
 D6 Seed stability: D1 repeated with RF seeds 0-4. Gate: AUROC std <= 0.02.
 Honest reporting: every gate reported pass/fail; failures stay failures. No gate edits after scoring. Amendments only before the run and noted here.
 Limits: database-curated labels (publication bias, IsActive definition per source), activity labels are heterogeneous, no structure, no experimental validation.
+
+## Amendment 1 (2026-10-09, after the first run was seen, before the amended run; disclosed)
+First run (kept in results/first_run) had a defect: D3's top-5 target classes included the string 'nan' (missing PrimaryTarget), the largest class. It was a labelling bug, not a real class. Amended D3: exclude rows with missing PrimaryTarget, then take the top 5 real targets; same gate (macro-F1 >= majority + 0.15). First run results (all 5 original gates met, D2 AUPRC 0.998 looked too good) were seen before this amendment, so the amended run is NOT a clean pre-registered test of D2; added robustness checks are below, set before they run.
+Added D7 (D2 and D1 robustness): (a) D2 physchem-only baseline (MolWeight, tPSA, clogP RF); (b) D1 and D2 re-scored only on test molecules with max Tanimoto to train < 0.85 (near-duplicate-excluded). Gate D7: D2 AUPRC on the <0.85 subset >= subset prevalence + 0.20, and D1 AUROC on the <0.85 subset >= 0.65. Gate edits: none to D1-D6.
