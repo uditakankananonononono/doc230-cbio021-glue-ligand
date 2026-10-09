@@ -41,7 +41,7 @@ i2,o2=oof(X,y2,m2); ap=average_precision_score(y2[i2],o2); prev=float(y2[i2].mea
 _,o2m=oof(meta,y2,m2); apm=average_precision_score(y2[i2],o2m)
 R['D2']=dict(auprc=round(ap,4),prevalence=round(prev,4),auprc_meta=round(apm,4),auroc=round(roc_auc_score(y2[i2],o2),4),gate_met=bool(ap>=prev+0.20)); print('D2',R['D2'],flush=True)
 # D3
-pt=d.PrimaryTarget.astype(str); top=pt.value_counts().index[:5].tolist(); m3=pt.isin(top).values; cls=sorted(top); y3=pt.map({c:i for i,c in enumerate(cls)}).fillna(-1).astype(int).values
+pt=d.PrimaryTarget.astype(str).str.strip(); pt=pt.where(d.PrimaryTarget.notna()&(pt!='')&(pt.str.lower()!='nan'),'__missing__'); top=pt[pt!='__missing__'].value_counts().index[:5].tolist(); m3=pt.isin(top).values; cls=sorted(top); y3=pt.map({c:i for i,c in enumerate(cls)}).fillna(-1).astype(int).values
 idx=np.where(m3)[0]; pred=np.zeros(len(idx),int); gg=g[idx]
 for tr,te in GroupKFold(5).split(idx,groups=gg):
     m=RandomForestClassifier(300,class_weight='balanced',n_jobs=2,random_state=0).fit(X[idx[tr]],y3[idx[tr]]); pred[te]=m.predict(X[idx[te]])
@@ -67,4 +67,15 @@ ss=[a_fp]
 for s in range(1,5):
     _,o=oof(X,y1,allm,seed=s); ss.append(roc_auc_score(y1[i1],o))
 R['D6']=dict(aurocs=[round(x,4) for x in ss],std=round(float(np.std(ss)),4),gate_met=bool(np.std(ss)<=0.02)); print('D6',R['D6'],flush=True)
+# D7
+mxall=np.zeros(len(d))
+for tr,te in GroupKFold(5).split(np.arange(len(d)),groups=g):
+    trb=[bv[i] for i in tr]
+    for j in te: mxall[j]=max(DataStructs.BulkTanimotoSimilarity(bv[j],trb))
+_,o2p=oof(phys,y2,m2); R['D7']={'D2_auprc_phys_only':round(average_precision_score(y2[i2],o2p),4)}
+s1=mxall[i1]<0.85; s2=mxall[i2]<0.85
+R['D7']['D1_auroc_sub085']=round(roc_auc_score(y1[i1][s1],o1[s1]),4); R['D7']['n_D1_sub']=int(s1.sum())
+R['D7']['D2_auprc_sub085']=round(average_precision_score(y2[i2][s2],o2[s2]),4); R['D7']['D2_prev_sub085']=round(float(y2[i2][s2].mean()),4); R['D7']['n_D2_sub']=int(s2.sum())
+R['D7']['gate_met']=bool(R['D7']['D2_auprc_sub085']>=R['D7']['D2_prev_sub085']+0.20 and R['D7']['D1_auroc_sub085']>=0.65)
+print('D7',R['D7'],flush=True)
 json.dump(R,open('results/results.json','w'),indent=1)

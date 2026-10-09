@@ -17,15 +17,15 @@
  },
  "D3": {
   "classes": [
-   "nan",
    "CDK12-CCNK(cyclin K)",
    "GSPT1",
    "IKZF1",
-   "CK1\u03b1"
+   "CK1\u03b1",
+   "IKZF3"
   ],
-  "n": 1136,
-  "macroF1": 0.8527,
-  "majority_macroF1": 0.1502,
+  "n": 511,
+  "macroF1": 0.9199,
+  "majority_macroF1": 0.0949,
   "gate_met": true
  },
  "D4": {
@@ -55,6 +55,15 @@
    0.8497
   ],
   "std": 0.0009,
+  "gate_met": true
+ },
+ "D7": {
+  "D2_auprc_phys_only": 0.7667,
+  "D1_auroc_sub085": 0.8511,
+  "n_D1_sub": 1388,
+  "D2_auprc_sub085": 0.9975,
+  "D2_prev_sub085": 0.2977,
+  "n_D2_sub": 1367,
   "gate_met": true
  }
 }

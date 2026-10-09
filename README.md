@@ -1,0 +1,5 @@
+partial: ligand-only slice on MolGlueDB (no structure model, no ternary complex, no discovery claim); all gates met but scores mostly reflect chemotype-series structure, see RESULTS.md
+# doc230-cbio021-glue-ligand
+Preregistered ligand-only tests of whether chemistry predicts molecular-glue properties (activity, E3 recruiter, primary target) in MolGlueDB under cold-scaffold validation. Parent: CBIO021 GlueForge (Molecular Glue Discovery Pipeline), whose structural core is NOT built here.
+Files: PREREG.md (with Amendment 1), RESULTS.md, src/run.py, results/ (results.json, run.log, first_run/ with the original run that had a target-label bug).
+Reproduce: obtain MolGlueDB_full.csv from https://www.molgluedb.com/download (the site's CSV download is a tar.gz from /api/export_bj_data, which needs a normal browser Referer header), put it in /tmp/glue/, check SHA256 in data_manifest/sha256.txt, then python3 src/run.py (needs rdkit, scikit-learn, pandas; about 3 minutes on 2 CPU). Raw data not committed; check the site terms before redistributing.

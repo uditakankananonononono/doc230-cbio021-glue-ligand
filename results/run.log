@@ -1,6 +1,7 @@
 {'n': 1629, 'n_scaffolds': 872}
 D1 {'auroc_fp': 0.8469, 'auroc_phys': 0.7027, 'auroc_meta': 0.4775, 'prevalence': 0.807, 'gate_met': True}
 D2 {'auprc': 0.9979, 'prevalence': 0.2792, 'auprc_meta': 0.8663, 'auroc': 0.9993, 'gate_met': True}
-D3 {'classes': ['nan', 'CDK12-CCNK(cyclin K)', 'GSPT1', 'IKZF1', 'CK1α'], 'n': 1136, 'macroF1': 0.8527, 'majority_macroF1': 0.1502, 'gate_met': True}
+D3 {'classes': ['CDK12-CCNK(cyclin K)', 'GSPT1', 'IKZF1', 'CK1α', 'IKZF3'], 'n': 511, 'macroF1': 0.9199, 'majority_macroF1': 0.0949, 'gate_met': True}
 D4 {'shuffle_auroc_mean': 0.4958, 'shuffle_aurocs': [0.4805, 0.547, 0.4676, 0.4965, 0.4875], 'mean_max_tanimoto': 0.707, 'share_ge_085': 0.148, 'gate_met': True}
 D6 {'aurocs': [0.8469, 0.8487, 0.8493, 0.8485, 0.8497], 'std': 0.0009, 'gate_met': True}
+D7 {'D2_auprc_phys_only': 0.7667, 'D1_auroc_sub085': 0.8511, 'n_D1_sub': 1388, 'D2_auprc_sub085': 0.9975, 'D2_prev_sub085': 0.2977, 'n_D2_sub': 1367, 'gate_met': True}
