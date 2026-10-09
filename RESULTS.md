@@ -17,7 +17,7 @@ All 6 gates plus D7 are met on paper. What that means:
 Caveats on counts: gates are my own prereg thresholds, not published benchmarks. D3 majority macro-F1 is the macro-F1 of always predicting the largest class (0.095), so the +0.15 bar was easy.
 
 ## Extension D8-D10 (PREREG_EXT.md and src/ext_run.py committed together at 3ca147e before any score; results/ext_results.json, ext_run.log)
-Same pipeline scored all splits in one script. Scaffold-cold reference: D1 AUROC 0.847 (share of test molecules with a train neighbour >=0.85: see ext_results.json), D2 AUPRC 0.998 (prevalence 0.279).
+Same pipeline scored all splits in one script. Scaffold-cold reference: D1 AUROC 0.847 (share of test molecules with a train neighbour >=0.85: 14.8%), D2 AUPRC 0.998 (prevalence 0.279).
 | Dir | Result | Gate |
 |---|---|---|
 | D8 cluster-cold D1 (Butina 0.60) | AUROC 0.784; share test with train neighbour >=0.85: 1.0% | MET (>=0.70) |
