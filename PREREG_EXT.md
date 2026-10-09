@@ -1,0 +1,9 @@
+# PREREG_EXT: 021 extension batch D8-D10 (written and committed with src/ext_run.py BEFORE any D8-D10 score exists)
+Date 2026-10-09. Gate-review lesson applied: the analysis script is committed in the same commit as this prereg, before results, so implementation choices are frozen too.
+Why: RESULTS.md says high scores mostly reflect shared labels within chemotype series and papers, and scaffold-cold leaves 14.8% of test molecules with a >=0.85 neighbour. D8-D10 test that caveat directly with stricter splits. Parent now has D1-D7 + D8-D10 = 10 directions (ligand-only slice; structural core still unbuilt).
+Data/features/model: identical to PREREG.md (same CSV, SHA256 in data_manifest, InChIKey dedupe, ECFP4 2048 + RDKit descriptors, RF 300 trees seed 0, class_weight balanced). Metrics pooled over out-of-fold rows.
+Fair-split control: every new split is scored in the same script next to the original scaffold-cold reference (D1 AUROC, D2 AUPRC) with the identical model, so comparisons use one pipeline. Splits are deterministic (GroupKFold 5 on the group labels), a single split assignment per direction, so no variance estimate; stated as a limit.
+D8 Cluster-cold D1: Butina clustering of ECFP4 at Tanimoto >= 0.60 (distance 0.40), clusters as groups, 5-fold GroupKFold. Gate: D1 AUROC >= 0.70. Also report share of test molecules with max train Tanimoto >= 0.85.
+D9 Source-cold D1: group = SourceAddress_Website (publication; 142 sources), 5-fold GroupKFold. Gate: D1 AUROC >= 0.65. Also report physchem-only RF AUROC under the same split.
+D10 Source-cold D2 (CRBN vs non-CRBN, rows with recruiter not Unknown): same source groups. Gate: AUPRC >= prevalence + 0.10.
+Honest reporting: pass/fail for each gate, no gate edits after scoring. Limits: source groups differ greatly in size (1 to 97 molecules), fold sizes are uneven; database labels; single split; no structure model, no experimental validation.
